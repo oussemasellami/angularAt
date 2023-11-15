@@ -1,0 +1,19 @@
+
+<br>
+<br>
+<div class="row ">
+  <div
+    class="card m-3"
+    style="width: 15rem"
+    *ngFor="let r of residencesList; let i = index"
+  >
+    <img [src]="r.image" class="card-img-top" />
+    <div class="card-body">
+      <h5 class="card-title">{{ r.name }}</h5>
+      <p class="card-text">
+        {{ r.address }}
+      </p>
+      <a href="#" class="btn btn-primary" [routerLink]="['showapparment', r.id]">Go To Appartment</a>
+    </div>
+  </div>
+</div>

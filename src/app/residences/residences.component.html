@@ -1,0 +1,45 @@
+<p>residences list!</p>
+<table border="3">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>address</td>
+        <td>Image</td>
+        <td>Appartment</td>
+    </tr>
+    <tr  *ngFor="let r of residencesList ;let i=index">
+        <td>{{r.id}}</td>
+        <td>{{r.name}}</td>
+        <td>{{r.address}}</td>
+        <td><img [src]="r.image" width="150px" height="150px"/></td>
+        <td>
+            <ul [id]="r.id">
+                <div *ngFor="let a of appartementsList;let i=index">
+                    <div *ngIf="r==a.residence">
+                        <li>
+                            {{a.numAppart}}
+                        </li>
+                    </div>
+                </div>
+
+            </ul>
+        </td>
+    </tr>
+</table>
+
+<br>
+<select name="residence" [(ngModel)]="selectResidence">
+    <option *ngFor="let r of residencesList ;let i=index" [value]="r.id">
+{{r.name}}
+    </option>
+</select>
+<button (click)="afficheappartement(selectResidence)">show appartement</button>
+
+<p>{{selectResidence}}</p>
+
+<div *ngFor="let s of selectedAppa; let i=index">
+    <li>
+       <b>Id :</b> {{s.id}} <b>terrasse :</b> {{s.terrasse}} <b>numAppart :</b>  {{s.numAppart}} <b>numEtage :</b> {{s.numEtage}} <b> :</b> {{s.surface}} <b>surfaceTerrasse :</b> {{s.surfaceTerrasse}} <b>Category :</b>{{s.category}} <b>Description :</b> {{s.description}}
+       <button (click)="buy(s)" [disabled]="!s.status">Buy</button>
+   </li>
+   </div>
